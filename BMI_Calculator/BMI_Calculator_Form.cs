@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BMI_Calculator
 {
-    public partial class Form1 : Form
+    public partial class BMI_Calculator_Form : Form
     {
-        public Form1()
+        public BMI_Calculator_Form()
         {
             InitializeComponent();
         }
