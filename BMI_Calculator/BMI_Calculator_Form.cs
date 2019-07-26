@@ -21,7 +21,9 @@ namespace BMI_Calculator
         public string outputstringresult { get; set; }
         public float result_value { get; set; }
         public bool decimalresult { get; set; }
-       
+
+        public Label Active_Label { get; set; }
+
         /// <summary>
         /// This is the form of my BMI Calculator
         /// </summary>
@@ -29,6 +31,34 @@ namespace BMI_Calculator
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// this is the event handler of loading the form and we have intialised it by clearing the
+        /// form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+
+        private void BMI_Calculator_Form_Load(object sender, EventArgs e)
+        {
+            Clear_Numeric_Keyboard();
+            Active_Label = null;
+            BMICalculatorTableLayoutPanel.Visible = false;
+            Size = new Size(320, 480);
+
+        }
+
+        private void BMI_Calculator_Form_Click(object sender, EventArgs e)
+        {
+            Clear_Numeric_Keyboard();
+            if(Active_Label != null)
+            {
+                Active_Label.BackColor = Color.White;
+            }
+            Active_Label = null;
+            BMICalculatorTableLayoutPanel.Visible = false;
+        }
+
 
         /// <summary>
         /// This is an event handler that shows the same text on result label or output as
@@ -98,20 +128,20 @@ namespace BMI_Calculator
                         break;
 
                     case "Done":
-                        if (!decimalresult)
-                        {
-                            outputstringresult = outputstringresult.Remove(outputstringresult.IndexOf('.') + 1);
-                        }
-                            result_value = float.Parse(outputstringresult);
+
+                        result_value = float.Parse(outputstringresult);
+                        result_value = (float)(Math.Round(result_value, 1));
 
                         if(result_value < 0.1f)
                         {
                             result_value = 0.1f;
                         }
 
-                        Output_Label.Text = result_value.ToString();
+                        Active_Label.Text = result_value.ToString();
                         Clear_Numeric_Keyboard();
                         BMICalculatorTableLayoutPanel.Visible = false;
+                        Active_Label.BackColor = Color.White;
+                        Active_Label = null;
 
                         break;
                     case "Decimal":
@@ -121,13 +151,8 @@ namespace BMI_Calculator
                             decimalresult = true;
                         }
                         break;
-
-                }
-            
+                }      
             }
-
-
-
         }
 
 
@@ -144,22 +169,29 @@ namespace BMI_Calculator
 
         }
 
-        /// <summary>
-        /// this is the event handler of loading the form and we have intialised it by clearing the
-        /// form.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 
-        private void BMI_Calculator_Form_Load(object sender, EventArgs e)
+     
+        private void Active_Label_Click_Event(object sender, EventArgs e)
         {
-            Clear_Numeric_Keyboard();
-            BMICalculatorTableLayoutPanel.Visible = false;
-        }
+            if(Active_Label != null)
+            {
+                Active_Label.BackColor = Color.White;
+                Active_Label = null;
+            }
 
-        private void Output_Result_Event(object sender, EventArgs e)
-        {
+            Active_Label = sender as Label;
+            Active_Label.BackColor = Color.LightBlue;
             BMICalculatorTableLayoutPanel.Visible = true;
+
+            if(Active_Label.Text != "0")
+            {
+                Resut_Label.Text = Active_Label.Text;
+                outputstringresult = Resut_Label.Text;
+            }
+
+            BMICalculatorTableLayoutPanel.Location = new Point(12, Active_Label.Location.Y + 55);
+            BMICalculatorTableLayoutPanel.BringToFront();
         }
+
     }
 }
