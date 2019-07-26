@@ -48,14 +48,22 @@ namespace BMI_Calculator
             bool numeric_result = int.TryParse(tag, out numeric_Value);
             if (numeric_result)
             {
-                if(outputstringresult == "0")
+
+                int maxSize = (decimalresult) ? 5 : 3;
+
+                if (outputstringresult == "0")
                 {
                     outputstringresult = tag;
                 }
                 else
                 {
-                    outputstringresult += tag;
+                    if(outputstringresult.Length < maxSize)
+                    {
+                        outputstringresult += tag;
+
+                    }
                     Resut_Label.Text = outputstringresult;
+
                 }
             }
 
@@ -90,7 +98,17 @@ namespace BMI_Calculator
                         break;
 
                     case "Done":
-                        result_value = float.Parse(outputstringresult);
+                        if (!decimalresult)
+                        {
+                            outputstringresult = outputstringresult.Remove(outputstringresult.IndexOf('.') + 1);
+                        }
+                            result_value = float.Parse(outputstringresult);
+
+                        if(result_value < 0.1f)
+                        {
+                            result_value = 0.1f;
+                        }
+
                         Output_Label.Text = result_value.ToString();
                         Clear_Numeric_Keyboard();
                         BMICalculatorTableLayoutPanel.Visible = false;
