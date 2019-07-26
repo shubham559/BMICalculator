@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BMICalculatorTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.Three_Button = new System.Windows.Forms.Button();
             this.Two_Button = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@
             this.Resut_Label = new System.Windows.Forms.Label();
             this.Height_Label = new System.Windows.Forms.Label();
             this.Weight_Label = new System.Windows.Forms.Label();
+            this.Timer_for_Animation = new System.Windows.Forms.Timer(this.components);
             this.BMICalculatorTableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -358,6 +360,11 @@
             this.Weight_Label.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.Weight_Label.Click += new System.EventHandler(this.Active_Label_Click_Event);
             // 
+            // Timer_for_Animation
+            // 
+            this.Timer_for_Animation.Interval = 16;
+            this.Timer_for_Animation.Tick += new System.EventHandler(this.BMI_Calculator_Up);
+            // 
             // BMI_Calculator_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(23F, 46F);
@@ -400,6 +407,7 @@
         private System.Windows.Forms.Button Clear_Button;
         private System.Windows.Forms.Label Height_Label;
         private System.Windows.Forms.Label Weight_Label;
+        private System.Windows.Forms.Timer Timer_for_Animation;
     }
 }
 

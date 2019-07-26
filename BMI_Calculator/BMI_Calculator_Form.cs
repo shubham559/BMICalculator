@@ -23,6 +23,8 @@ namespace BMI_Calculator
         public bool decimalresult { get; set; }
 
         public Label Active_Label { get; set; }
+        public Locomotion animated_field;
+
 
         /// <summary>
         /// This is the form of my BMI Calculator
@@ -46,6 +48,7 @@ namespace BMI_Calculator
             BMICalculatorTableLayoutPanel.Visible = false;
             Size = new Size(320, 480);
 
+            animated_field = Locomotion.IDLE;
         }
 
         private void BMI_Calculator_Form_Click(object sender, EventArgs e)
@@ -56,7 +59,8 @@ namespace BMI_Calculator
                 Active_Label.BackColor = Color.White;
             }
             Active_Label = null;
-            BMICalculatorTableLayoutPanel.Visible = false;
+            animated_field = Locomotion.DOWN;
+            Timer_for_Animation.Enabled = true;
         }
 
 
@@ -129,19 +133,27 @@ namespace BMI_Calculator
 
                     case "Done":
 
-                        result_value = float.Parse(outputstringresult);
-                        result_value = (float)(Math.Round(result_value, 1));
-
-                        if(result_value < 0.1f)
+                        if(outputstringresult == string.Empty)
                         {
-                            result_value = 0.1f;
+                            outputstringresult = "0";
                         }
+
+                        result_value = float.Parse(outputstringresult);
+                        //result_value = (float)(Math.Round(result_value, 1));
+
+                        //if(result_value < 0.1f)
+                        //{
+                        //    result_value = 0.1f;
+                        //}
 
                         Active_Label.Text = result_value.ToString();
                         Clear_Numeric_Keyboard();
                         BMICalculatorTableLayoutPanel.Visible = false;
                         Active_Label.BackColor = Color.White;
                         Active_Label = null;
+
+                        animated_field = Locomotion.DOWN;
+                        Timer_for_Animation.Enabled = true;
 
                         break;
                     case "Decimal":
@@ -189,9 +201,60 @@ namespace BMI_Calculator
                 outputstringresult = Resut_Label.Text;
             }
 
-            BMICalculatorTableLayoutPanel.Location = new Point(12, Active_Label.Location.Y + 55);
+            //BMICalculatorTableLayoutPanel.Location = new Point(12, Active_Label.Location.Y + 55);
             BMICalculatorTableLayoutPanel.BringToFront();
+            Timer_for_Animation.Enabled = true;
+            animated_field = Locomotion.UP;
+
         }
+
+        private void BMI_Calculator_Up(object sender, EventArgs e)
+        {
+            switch (animated_field)
+            {
+                case Locomotion.IDLE:
+                    break;
+                case Locomotion.UP:
+                    BMI_Calculator_UP();
+
+                    break;
+                case Locomotion.DOWN:
+                    BMI_Calculator_Down();
+                    break;
+            }
+
+        }
+
+        private void BMI_Calculator_UP()
+        {
+            var present_location = BMICalculatorTableLayoutPanel.Location;
+            present_location = new Point(present_location.X, present_location.Y - 20);
+            BMICalculatorTableLayoutPanel.Location = present_location;
+
+            if (present_location.Y <= Active_Label.Location.Y + 55)
+            {
+                BMICalculatorTableLayoutPanel.Location = new Point(present_location.X, Active_Label.Location.Y + 55);
+                Timer_for_Animation.Enabled = false;
+                animated_field = Locomotion.IDLE;
+            }
+
+        }
+
+        private void BMI_Calculator_Down()
+        {
+            var present_location = BMICalculatorTableLayoutPanel.Location;
+            present_location = new Point(present_location.X, present_location.Y + 20);
+            BMICalculatorTableLayoutPanel.Location = present_location;
+
+            if (present_location.Y >= 466)
+            {
+                BMICalculatorTableLayoutPanel.Location = new Point(present_location.X, 466);
+                Timer_for_Animation.Enabled = false;
+                animated_field = Locomotion.IDLE;
+            }
+
+        }
+
 
     }
 }

@@ -52,6 +52,7 @@
     <Compile Include="BMI_Calculator_Form.Designer.cs">
       <DependentUpon>BMI_Calculator_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Locomotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BMI_Calculator_Form.resx">
