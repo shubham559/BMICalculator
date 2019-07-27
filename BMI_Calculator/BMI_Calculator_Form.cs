@@ -10,10 +10,28 @@ using System.Windows.Forms;
 
 namespace BMI_Calculator
 {
-
+    /// <summary>
+    /// 
+    /// Name - SHUBHAM
+    /// Student ID-301044110
+    ///  Last Date Modified: 26/07/19
+    /// 
+    /// This is a BMI Calculator Application that is continuously itterated till it's final version.
+    /// The commits are inorder to major changes and necessary results that were important to be saved.
+    /// In this we have an imperical as well as a metric button for the user's convenience of units.
+    /// The user can't input either weight ="0" or  height = "0" because that is practically imposible
+    /// The user also can't input anything other than number because of our calculator that restricts
+    /// user's input.
+    /// 
+    /// Hope You Enjoy This App!! 
+    /// 
+    /// </summary>
 
     public partial class BMI_Calculator_Form : Form
     {
+       
+
+
         /// <summary>
         /// These are class properties that will contain the respective value
         /// </summary>
@@ -22,6 +40,8 @@ namespace BMI_Calculator
         public float result_value { get; set; }
         public bool decimalresult { get; set; }
         public double bmiresult { get; set; }
+
+
 
 
         public Label Active_Label { get; set; }
@@ -145,10 +165,6 @@ namespace BMI_Calculator
             {
                 outputstringresult = "0";
             }
-
-
-            
-
 
             result_value = float.Parse(outputstringresult);
             //result_value = (float)(Math.Round(result_value, 1));
@@ -326,6 +342,12 @@ namespace BMI_Calculator
                 bmiresult = Weight / Math.Pow(Height, 2);
                 BMI_Result_label.Text = bmiresult.ToString();
             }
+
+            if(BMI_Result_label.Text == "20")
+            {
+                progressBar1.
+            }
+
         }
 
         private void Reset_button_Click(object sender, EventArgs e)

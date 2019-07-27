@@ -39,7 +39,6 @@
             this.Nine_Button = new System.Windows.Forms.Button();
             this.Eight_Button = new System.Windows.Forms.Button();
             this.Seven_Button = new System.Windows.Forms.Button();
-            this.Back_Button = new System.Windows.Forms.Button();
             this.Decimal_Button = new System.Windows.Forms.Button();
             this.Clear_Button = new System.Windows.Forms.Button();
             this.Done_Button = new System.Windows.Forms.Button();
@@ -58,6 +57,7 @@
             this.Reset_button = new System.Windows.Forms.Button();
             this.Calculation_label = new System.Windows.Forms.Label();
             this.BMI_Result_label = new System.Windows.Forms.Label();
+            this.Back_Button = new System.Windows.Forms.Button();
             this.BMICalculatorTableLayoutPanel.SuspendLayout();
             this.Unit_GroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -240,24 +240,6 @@
             this.Seven_Button.Text = "7";
             this.Seven_Button.UseVisualStyleBackColor = false;
             this.Seven_Button.Click += new System.EventHandler(this.Calculator_Button_Click);
-            // 
-            // Back_Button
-            // 
-            this.Back_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Back_Button.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.Back_Button.BackgroundImage = global::BMI_Calculator.Properties.Resources.backbutton;
-            this.Back_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Back_Button.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Back_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Back_Button.Location = new System.Drawing.Point(207, 50);
-            this.Back_Button.Name = "Back_Button";
-            this.Back_Button.Size = new System.Drawing.Size(64, 41);
-            this.Back_Button.TabIndex = 2;
-            this.Back_Button.Tag = "Back";
-            this.Back_Button.UseVisualStyleBackColor = false;
-            this.Back_Button.Click += new System.EventHandler(this.Calculator_Button_Click);
             // 
             // Decimal_Button
             // 
@@ -492,6 +474,24 @@
             this.BMI_Result_label.Text = "0";
             this.BMI_Result_label.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BMI_Result_label.Click += new System.EventHandler(this.Active_Label_Click_Event);
+            // 
+            // Back_Button
+            // 
+            this.Back_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Back_Button.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.Back_Button.BackgroundImage = global::BMI_Calculator.Properties.Resources.backbutton;
+            this.Back_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Back_Button.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Back_Button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Back_Button.Location = new System.Drawing.Point(207, 50);
+            this.Back_Button.Name = "Back_Button";
+            this.Back_Button.Size = new System.Drawing.Size(64, 41);
+            this.Back_Button.TabIndex = 2;
+            this.Back_Button.Tag = "Back";
+            this.Back_Button.UseVisualStyleBackColor = false;
+            this.Back_Button.Click += new System.EventHandler(this.Calculator_Button_Click);
             // 
             // BMI_Calculator_Form
             // 
