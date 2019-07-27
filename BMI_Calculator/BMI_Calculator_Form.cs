@@ -343,10 +343,7 @@ namespace BMI_Calculator
                 BMI_Result_label.Text = bmiresult.ToString();
             }
 
-            if(BMI_Result_label.Text == "20")
-            {
-                progressBar1.
-            }
+     
 
         }
 
